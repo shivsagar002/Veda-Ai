@@ -149,7 +149,10 @@ veda-ai/
 └── README.md                 # Complete project documentation
 ```
 
+<<<<<<< HEAD
 ---
 
 
+=======
+>>>>>>> 782a10f (Bug During Development fixed)
 Enjoy building the future of classroom assessments with **VedaAI**! 🎓✨

@@ -156,7 +156,7 @@ router.post('/', async (req: Request, res: Response) => {
       console.log('MongoDB offline. Creating assignment record in in-memory fallback store...');
       
       const mockId = new mongoose.Types.ObjectId().toString();
-      const newAssignment = {
+      const newAssignment: any = {
         _id: mockId,
         dueDate,
         subject: subject || '',
@@ -400,7 +400,7 @@ router.post('/:id/pdf', async (req: Request, res: Response) => {
       }
 
       const localPath = path.join(pdfsDir, fileName);
-      await generateAssignmentPDF(assignment.generatedPaper, localPath);
+      await generateAssignmentPDF(assignment.generatedPaper!, localPath);
 
       const pdfUrl = `/public/pdfs/${fileName}`;
       assignment.pdfUrl = pdfUrl;
