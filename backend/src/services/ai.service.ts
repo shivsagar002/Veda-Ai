@@ -350,7 +350,7 @@ export const generateAssessmentAI = async (
       const newQuestion: IQuestion = {
         text: bankItem.text,
         type: config.type === 'Multiple Choice Questions' ? 'MCQ' : config.type,
-        options: bankItem.options ? [...bankItem.options] : undefined,
+        options: bankItem.options ? [...(bankItem.options as string[])] : undefined,
         correctAnswer: bankItem.correctAnswer,
         difficulty: bankItem.difficulty as 'Easy' | 'Moderate' | 'Hard',
         marks: config.marks,
