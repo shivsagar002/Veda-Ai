@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Tailwind CSS directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Design Tokens / HSL Color System Custom Properties */
+  --bg-primary: #f6f6f6;
+  --bg-secondary: #ffffff;
+  --bg-sidebar: #181818;
+  --bg-card: #ffffff;
+  --bg-hover: rgba(48, 48, 48, 0.05);
+  
+  --text-primary: #181818;
+  --text-secondary: rgba(94, 94, 94, 0.8);
+  --text-muted: rgba(48, 48, 48, 0.6);
+  --text-white: #ffffff;
+
+  --accent-orange: #ff5623;
+  --accent-orange-glow: rgba(255, 86, 35, 0.2);
+  --accent-orange-gradient: linear-gradient(135deg, #ff7950 0%, #ff5623 100%);
+  
+  --border-color: rgba(0, 0, 0, 0.08);
+  --border-dashed: rgba(0, 0, 0, 0.2);
+  
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.12);
+  
+  --font-display: 'Bricolage Grotesque', sans-serif;
+  --font-sans: 'Inter', sans-serif;
+  
+  /* Difficulty colors */
+  --color-easy: #17cb9e;
+  --color-easy-bg: rgba(23, 203, 158, 0.1);
+  --color-moderate: #ff9e10;
+  --color-moderate-bg: rgba(255, 158, 16, 0.1);
+  --color-hard: #c53535;
+  --color-hard-bg: rgba(197, 53, 53, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  height: 100vh;
+}
+
+/* Base custom interactive scrollbar styles */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Glassmorphism details */
+.glass {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+/* Custom Base Animations & Ripple Beacons */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseGlow {
+  0% { transform: scale(0.95); opacity: 0.5; }
+  50% { transform: scale(1.05); opacity: 0.8; }
+  100% { transform: scale(0.95); opacity: 0.5; }
+}
+
+@keyframes beaconRipple {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(2.8); opacity: 0; }
+}
+
+.animate-fade {
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2s infinite ease-in-out;
+}
+
+.beacon-outer-ripple {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: inherit;
+  animation: beaconRipple 1.8s infinite ease-out;
+  pointer-events: none;
+}
+
+/* High-Fidelity Question Paper Print Rules */
+@media print {
+  /* Hide desktop sidebar, desktop topbar, floating action buttons, all buttons, layout mobile structures, and print-hidden components */
+  .desktop-sidebar,
+  .desktop-topbar,
+  div[class*="MOBILE"],
+  div[class*="mobile"],
+  div[class*="fixed"],
+  div[class*="bg-[#232323]"],
+  button,
+  a,
+  svg,
+  .print\:hidden {
+    display: none !important;
+  }
+
+  /* Reset outer viewport and all nested structural flex/scrollable containers to allow seamless page breaking */
+  html, 
+  body, 
+  div.flex, 
+  .main-content, 
+  .flex-1,
+  div[class*="flex"],
+  div[class*="main-content"] {
+    background-color: #ffffff !important;
+    background: #ffffff !important;
+    color: #181818 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    position: relative !important;
+    display: block !important;
+    box-shadow: none !important;
+  }
+
+  /* Expand main content and layout components to full page and hide gray/translucent backdrops */
+  div[class*="bg-[#181818CC]"] {
+    background-color: transparent !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Format the White Paper Card itself to cover the entire page with standard margins */
+  div[class*="bg-white"], .bg-white {
+    box-shadow: none !important;
+    border: none !important;
+    padding: 1.2cm !important; /* Elegant printable page margin */
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    background-color: #ffffff !important;
+    display: block !important;
+  }
+
+  /* Force all print text to look perfectly solid black for readability */
+  * {
+    color: #181818 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
