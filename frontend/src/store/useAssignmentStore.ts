@@ -23,6 +23,10 @@ export interface IGeneratedPaper {
   duration: string;
   instructions: string[];
   sections: ISection[];
+  schoolHeader?: {
+    board?: string;
+    name?: string;
+  };
 }
 
 export interface IQuestionTypeConfig {
@@ -57,17 +61,17 @@ interface AssignmentState {
   additionalInstructions: string;
   sourceText: string;
   questionTypes: IQuestionTypeConfig[];
-  
+
   // App lists & single state
   assignmentsList: IAssignment[];
   currentAssignment: IAssignment | null;
-  
+
   // Real-time worker loading states
   isGenerating: boolean;
   progressStep: number;
   progressTotalSteps: number;
   progressMessage: string;
-  
+
   // PDF loading states
   pdfCompiling: boolean;
   pdfUrl: string | null;
@@ -113,12 +117,12 @@ export const useAssignmentStore = create<AssignmentState>((set) => ({
   setDueDate: (date) => set({ dueDate: date }),
   setAdditionalInstructions: (text) => set({ additionalInstructions: text }),
   setSourceText: (text) => set({ sourceText: text }),
-  
+
   updateQuestionType: (type, key, action) =>
     set((state) => ({
       questionTypes: state.questionTypes.map((q) => {
         if (q.type !== type) return q;
-        
+
         let value = q[key];
         if (action === 'inc') {
           value += 1;
@@ -127,14 +131,14 @@ export const useAssignmentStore = create<AssignmentState>((set) => ({
         } else if (typeof action === 'number') {
           value = action;
         }
-        
+
         return { ...q, [key]: value };
       }),
     })),
 
   setAssignmentsList: (list) => set({ assignmentsList: list }),
   setCurrentAssignment: (assignment) => set({ currentAssignment: assignment, error: null }),
-  
+
   startGeneration: () =>
     set({
       isGenerating: true,
@@ -142,14 +146,14 @@ export const useAssignmentStore = create<AssignmentState>((set) => ({
       progressMessage: 'Connecting to background worker...',
       error: null,
     }),
-    
+
   setGenerationProgress: (step, total, message) =>
     set({
       progressStep: step,
       progressTotalSteps: total,
       progressMessage: message,
     }),
-    
+
   completeGeneration: (assignment) =>
     set({
       currentAssignment: assignment,
@@ -158,7 +162,7 @@ export const useAssignmentStore = create<AssignmentState>((set) => ({
       progressMessage: '',
       error: null,
     }),
-    
+
   failGeneration: (error) =>
     set({
       isGenerating: false,
@@ -166,7 +170,7 @@ export const useAssignmentStore = create<AssignmentState>((set) => ({
       progressMessage: '',
       error,
     }),
-    
+
   resetProgress: () =>
     set({
       isGenerating: false,
@@ -174,7 +178,7 @@ export const useAssignmentStore = create<AssignmentState>((set) => ({
       progressMessage: '',
       error: null,
     }),
-    
+
   setPDFCompiling: (compiling) => set({ pdfCompiling: compiling }),
   setPDFUrl: (url) => set({ pdfUrl: url, pdfCompiling: false }),
   setError: (err) => set({ error: err }),
