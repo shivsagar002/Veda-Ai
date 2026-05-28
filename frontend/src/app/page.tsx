@@ -239,7 +239,7 @@ export default function Dashboard() {
                             </td>
                             <td className="py-3.5 px-3 text-center">
                               <div className="flex items-center justify-center gap-2">
-                                <Link href={`/assignment/${assignment._id}`}>
+                                <Link href={`/assignment?id=${assignment._id}`}>
                                   <button 
                                     className="p-1.5 rounded-lg border-none bg-brand-accent/5 cursor-pointer hover:bg-brand-accent/10 transition-colors"
                                     onClick={() => setCurrentAssignment(assignment)}
@@ -368,7 +368,7 @@ export default function Dashboard() {
 
                           {activeMenuId === assignment._id && (
                             <div className="absolute top-7 right-0 bg-white border border-black/[0.08] rounded-xl p-1.5 shadow-md z-[99] w-[140px]">
-                              <Link href={`/assignment/${assignment._id}`} className="no-underline">
+                              <Link href={`/assignment?id=${assignment._id}`} className="no-underline">
                                 <div className="flex items-center py-2 px-3 text-xs font-semibold text-[#181818] rounded-lg cursor-pointer transition-colors duration-200 hover:bg-gray-100" onClick={() => setCurrentAssignment(assignment)}>
                                   <Eye size={14} className="mr-2" />
                                   View Paper

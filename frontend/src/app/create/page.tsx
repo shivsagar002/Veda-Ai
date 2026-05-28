@@ -84,7 +84,7 @@ export default function CreateAssignment() {
 
   React.useEffect(() => {
     if (currentAssignment && currentAssignment.status === 'COMPLETED' && activeJobId === currentAssignment._id) {
-      router.push(`/assignment/${currentAssignment._id}`);
+      router.push(`/assignment?id=${currentAssignment._id}`);
       resetProgress();
       setActiveJobId(null);
     }

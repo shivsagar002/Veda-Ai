@@ -265,7 +265,7 @@ export default function AssignmentsPage() {
 
                         {activeMenuId === assignment._id && (
                           <div className="absolute top-7 right-0 bg-white border border-black/[0.08] rounded-xl p-1.5 shadow-[0_8px_24px_rgba(0,0,0,0.12)] z-[100] min-w-[150px]" onClick={(e) => e.stopPropagation()}>
-                            <Link href={`/assignment/${assignment._id}`} className="no-underline">
+                            <Link href={`/assignment?id=${assignment._id}`} className="no-underline">
                               <div
                                 className="flex items-center py-2 px-3 text-[13px] font-semibold text-brand-primary rounded-lg cursor-pointer transition-colors duration-150 hover:bg-gray-100"
                                 onClick={() => { setCurrentAssignment(assignment); setActiveMenuId(null); }}
