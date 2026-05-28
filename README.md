@@ -150,9 +150,12 @@ veda-ai/
 ```
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ---
 
 
 =======
 >>>>>>> 782a10f (Bug During Development fixed)
+=======
+>>>>>>> 782a10f99208fa20522382dd49af027a9ec0217b
 Enjoy building the future of classroom assessments with **VedaAI**! 🎓✨
