@@ -11,7 +11,7 @@ import {
   Book, 
   PieChart, 
   Settings, 
-  Plus 
+  Sparkles 
 } from 'lucide-react';
 import vedaLogo from '../app/assets/VedaAI_logo.svg';
 
@@ -40,7 +40,7 @@ export default function Sidebar() {
       <Link href="/create" className="no-underline">
         <button className="w-full h-12 bg-brand-primary border-none rounded-full flex justify-center items-center text-white font-sans text-[15px] font-bold cursor-pointer relative overflow-hidden mb-8 shadow-[0_4px_12px_rgba(0,0,0,0.15)] transition-all duration-300 hover:bg-brand-primary/95 hover:scale-[0.98] active:scale-[0.96]">
           <div className="absolute inset-0 bg-gradient-to-r from-white/5 to-white/10 opacity-80 transition-opacity duration-200 hover:opacity-100"></div>
-          <Plus size={18} color="#ffffff" className="mr-2 relative z-10" />
+          <Sparkles size={16} color="#ffffff" className="mr-2 relative z-10" />
           <span className="relative z-10">Create Assignment</span>
         </button>
       </Link>

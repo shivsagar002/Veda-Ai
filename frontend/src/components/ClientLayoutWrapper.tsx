@@ -33,7 +33,7 @@ export default function ClientLayoutWrapper({
     <div className="flex flex-col md:flex-row h-screen w-screen overflow-hidden relative max-md:overflow-y-auto">
       
       {/* MOBILE TOP BRAND BAR (Figma Floating Pill Spec) */}
-      <div className="flex md:hidden bg-white rounded-2xl m-4 mb-2 h-16 px-4 pl-5 items-center justify-between shadow-[0_4px_20px_rgba(0,0,0,0.08)] border border-black/[0.04]">
+      <div className="flex md:hidden bg-white rounded-2xl m-4 mb-2 h-16 px-4 pl-5 items-center justify-between shadow-[0_4px_20px_rgba(0,0,0,0.08)] border border-black/[0.04] py-5">
         <div className="flex items-center gap-2">
           <div className="w-9 h-9 flex justify-center items-center">
             <Image src={vedaLogoMobile} alt="VedaAI Logo" width={36} height={36} />

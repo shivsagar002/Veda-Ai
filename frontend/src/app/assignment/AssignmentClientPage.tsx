@@ -283,7 +283,7 @@ export default function AssignmentClientPage() {
             <div className="bg-white rounded-[32px] p-12 max-md:p-6 shadow-[0_4px_32px_rgba(0,0,0,0.05)] border border-black/[0.04] flex flex-col font-sans text-[#181818]">
               {/* Header metadata */}
               <div className="flex flex-col items-center text-center pb-6 border-b border-black/[0.08] mb-8 gap-1 shrink-0">
-                <span className="font-display text-[22px] font-black uppercase tracking-tight">{currentAssignment.generatedPaper.schoolHeader?.board || "DELHI PUBLIC SCHOOL"}</span>
+                <h1 className="font-display text-[22px] font-black uppercase tracking-tight m-0">{currentAssignment.generatedPaper.schoolHeader?.board || "DELHI PUBLIC SCHOOL"}</h1>
                 <span className="font-display text-sm font-extrabold text-[#5e5e5e] tracking-tight">{currentAssignment.generatedPaper.schoolHeader?.name || "BOKARO STEEL CITY"}</span>
                 <div className="flex justify-between w-full mt-6 text-xs font-bold text-gray-500 max-md:flex-col max-md:gap-2">
                   <span className="text-left max-md:text-center font-sans">SUBJECT: {paper.subject?.toUpperCase() || "SCIENCE"}</span>
